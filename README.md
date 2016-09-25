@@ -16,7 +16,6 @@ ex)
 #cat webhookurlfile
 https://hooks.slack.com/services/asdfgh/jklmnbvcxz/qwertyuiop
 ```
-
 2. NowIsThetimeForASABUhospital.pyを診察番号を第一引数として付与して実行する。  
 ```
 ex) 診察番号が300の場合
