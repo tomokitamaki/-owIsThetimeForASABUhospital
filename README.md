@@ -10,7 +10,7 @@ slackで通知してくれたほうが自分としては都合がいいので作
 
 # 使い方
 1. このリポジトリをcloneする  
-1. *webhookurlfile* というファイル名で中身はwebhookのURLというファイルを用意する。
+1. *webhookurlfile* というファイル名で中身はwebhookのURLというファイルを用意する。  
 ```
 ex)
 #cat webhookurlfile
