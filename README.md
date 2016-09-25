@@ -11,16 +11,16 @@ slackで通知してくれたほうが自分としては都合がいいので作
 # 使い方
 1. このリポジトリをcloneする  
 1. *webhookurlfile* というファイル名で中身はwebhookのURLというファイルを用意する。  
-```
-ex)
-#cat webhookurlfile
-https://hooks.slack.com/services/asdfgh/jklmnbvcxz/qwertyuiop
-```
-2. NowIsThetimeForASABUhospital.pyを診察番号を第一引数として付与して実行する。  
-```
+~~~
+    ex)
+    #cat webhookurlfile
+    https://hooks.slack.com/services/asdfgh/jklmnbvcxz/qwertyuiop
+~~~
+1. NowIsThetimeForASABUhospital.pyを診察番号を第一引数として付与して実行する。  
+~~~
 ex) 診察番号が300の場合
 python NowIsThetimeForASABUhospital.py 300
-```
+~~~
 
 # 課題
 slackでメンションつけて診察番号を投稿すると  
