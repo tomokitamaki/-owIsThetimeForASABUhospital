@@ -1,5 +1,6 @@
-#! /root/.pyenv/shims/python3.5
+# -*- coding: utf-8 -*-
 
+import webhookurlfile
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -7,29 +8,28 @@ import time
 import sys
 args = sys.argv
 
-f = open('webhookurlfile')
-webhookurl = f.read()
-f.close
+payload_dic = {
+    "text": 'もうすぐ診察の順番ですよ',
+    "username": 'sinsatu_BOT',
+    "icon_emoji": ':hospital:',
+    "channel": '#general',
+}
 
-# 診察番号を引数で取得するようなコードを書くところから
-
-search_num = str('[' + args[1] + ']')
-cnt = 0
-while (cnt < 5):
-    r = requests.get('http://konzatsu.net/sfd-m.php?cid=17514799')
-    result = r.text.find(search_num)
-    if result < 0:
-        print("Empty\"r\"")
-        if not cnt == 0:
-             sys.exit()
-        time.sleep(300)
+hospital_url = "https://www.shimafukurou.net/shimafukuro/sfd-m.php?cid=175147999"
+while True:
+    result = requests.get(hospital_url)
+    if result.status_code == 200:
+        soup = BeautifulSoup(result.text, "lxml")
+        all_waiting_num = soup.find_all("font", attrs={"class": "nakamachi_num_text"})
+        if len(all_waiting_num) != 0:
+            for i in all_waiting_num:
+                if str(args[1]) in i.text:
+                    requests.post(webhookurlfile.slack_url,
+                                data=json.dumps(payload_dic))
+        else:
+            print("none")
+            pass
     else:
-        payload_dic = {
-            "text":'もうすぐ診察の順番ですよ',
-            "username":'sinsatu_BOT',
-            "icon_emoji":':hospital:',
-            "channel":'#sandbox',
-            }
-        cnt = cnt + 1
-        requests.post(webhookurl, data=json.dumps(payload_dic))
-        time.sleep(60)
+        pass
+    time.sleep(300)
+    
