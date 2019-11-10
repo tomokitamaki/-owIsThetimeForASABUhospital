@@ -15,7 +15,7 @@ payload_dic = {
     "channel": '#general',
 }
 
-hospital_url = "https://www.shimafukurou.net/shimafukuro/sfd-m.php?cid=175147999"
+hospital_url = "https://www.shimafukurou.net/shimafukuro/sfd-m.php?cid=17514799"
 while True:
     result = requests.get(hospital_url)
     if result.status_code == 200:
